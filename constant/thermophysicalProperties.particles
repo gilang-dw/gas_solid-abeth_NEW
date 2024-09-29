@@ -1,0 +1,51 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2312                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      thermophysicalProperties.particles;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+thermoType
+{
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          hConst;
+    equationOfState rhoConst;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
+
+mixture
+{
+    specie
+    {
+        molWeight   60.08; // Molar mass of SiO2 (silica)
+    }
+    equationOfState
+    {
+        rho         1480;  // Density of silica sand in kg/m^3
+    }
+    thermodynamics
+    {
+        Cp          730;   // Specific heat capacity in J/kg/K
+        Hf          0;
+    }
+    transport
+    {
+        mu          2.3;     // Dynamic viscosity (negligible for solid particles)
+        Pr          1;
+    }
+}
+
+
+// ************************************************************************* //
